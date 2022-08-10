@@ -1,0 +1,29 @@
+        <div class="sidebar">
+            <h2>hi admin</h2>
+            <ul>
+            <li class="nav-item <%= path === "/dashbord" ? "aktive" : "" %>  ">
+                <a href="/dashboard"><i class="fas fa-home"></i>Dashbord</a>
+            </li>
+            <li class="nav-item <%= path  === "/pelanggan" ? "aktive" : "" %> ">
+                <a href="/customer/data-pelanggan"><i class="fas fa-user"></i>Data Pelanggan</a>
+            </li>
+            <li class="nav-item  <% if (path === "/karyawan") { %>
+                aktive
+            <% } else if (path === "/kartap") {%> 
+                activered
+            <%} else  {%> gk ada <%}  %> ">
+                <a href="/karyawan"><i class="fas fa-user-tie"></i>Data Pekerja</a>
+            </li>
+            <li>
+                <form action="/logut" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="fas" type="submit"><i class="bi bi-box-arrow-left"></i>Keluar</button>
+                </form>
+            </li>
+            </ul>
+            <div class="social_media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>

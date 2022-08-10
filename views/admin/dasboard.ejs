@@ -1,0 +1,92 @@
+    <%- include('../includes/head.ejs') %> 
+
+    </head>
+    <body>
+        <div class="wrapper">
+        <%- include('../includes/nav.ejs') %>
+        <div class="main_content">
+            <% if (login) { %>
+                <div class="header"><i class="bi bi-graph-up"></i> Dashboard</div>
+            <% } %>
+
+            <div class="info">
+            <div class="row text-white justify-content-center">
+                <div class="col-5">
+                <div class="card bg-primary" style="width: 18rem">
+                    <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <h5 class="card-title">Jumlah Pelanggan</h5>
+                    <div class="col-9 text-center">
+                        <div class="display-4"><%= data.length %></div>
+                    </div>
+
+                    <a
+                        href="/customer/data-pelanggan"
+                        class="nav-link text-white"
+                    >
+                        Lihat Detail <i class="bi bi-arrow-right"></i
+                    ></a>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-5">
+                <div class="card bg-danger" style="width: 18rem">
+                    <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <h5 class="card-title">Jumlah Karyawan</h5>
+                    <div class="col-9 text-center">
+                        <div class="display-4"> <%= data2.length %></div>
+                    </div>
+                    <a href="/karyawan" class="nav-link text-white">
+                        Lihat Detail <i class="bi bi-arrow-right"></i
+                    ></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <br /><br />
+            <div class="row text-white justify-content-center">
+                <div class="col-5">
+                <div class="card text-center" style="width: 18rem">
+                    <div class="card-header bg-primary display-4 pt-4 pb-4">
+                    <i class="bi bi-globe"></i>
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title text-primary">WEBSITE</h5>
+                    <br /><br />
+                    <a
+                        href="http://lords.id/"
+                        target="_blank"
+                        class="btn btn-primary"
+                        >Visit</a
+                    >
+                    </div>
+                </div>
+                </div>
+                <div class="col-5">
+                <div class="card text-center" style="width: 18rem">
+                    <div class="card-header bg-danger display-4 pt-4 pb-4">
+                    <i class="bi bi-instagram"></i>
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title text-danger">INSTAGRAM</h5>
+                    <br /><br />
+                    <a
+                        href="https://www.instagram.com/lordsindonesia/"
+                        target="_blank"
+                        class="btn btn-danger"
+                        >Follow</a
+                    >
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    <%- include('../includes/end.ejs') %>

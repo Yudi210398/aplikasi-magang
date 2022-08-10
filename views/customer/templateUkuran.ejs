@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %> 
+
+</head>
+<body>
+    <div class="wrapper">
+    <%- include('../includes/nav.ejs') %>
+    <div class="main_content">
+        <div class="header">Ukuran <%= produk.namaCustomer %>  <i class="bi bi-clipboard-data text-center"></i> </div>
+
+        <div class="info">
+            <br><br>
+            <br>
+            <div class="row text-center justify-content-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Ukuran Pakaian</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <form action="/customer/ukuran/<%= produk._id %>/edit" method="get">
+                                    <th scope="row"><%= produk.no %> </th>
+                                    <td><%= produk.namaCustomer %> </td>
+                                    <td>
+                                        <select class="form-select" aria-label="Default select example" name="hasil">
+                                            <option value="baju">Baju</option>
+                                            <option value="celana">Celana</option>
+                                            <option value="jas">Jas</option>
+                                        </select>
+                                    </td>
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <td><button class="btn btn-primary" type="submit">Submit</button></td>
+                                </form>
+                            </tr>
+                    </tbody>
+                </table>
+        
+            </div>
+            </div>
+    </div>
+    </div>
+<%- include('../includes/end.ejs') %>

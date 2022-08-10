@@ -1,0 +1,105 @@
+<%- include('../includes/head.ejs') %> 
+
+</head>
+<body>
+    <div class="wrapper">
+    <%- include('../includes/nav.ejs') %>
+    <div class="main_content">
+        <div class="header">Ukuran Celana <%= produk.namaCustomer %>  <i class="bi bi-clipboard-data text-center"></i></div>
+
+        <div class="info">
+            <br>
+            <form action="/customer/ukuranCelana" method="post">
+                <div class="row justify-content-center ukuranRow">
+                    <div class="col-10">
+                        <%- include('../includes/navFixed.ejs') %> 
+                        <div class="row baju-row">
+
+                            <div class="col-1">
+                                <p class="lead">1</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">pinggang</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="pinggang" value="<%= produk.ukuran.celana[0]?.pinggang %>">
+                            </div> 
+
+                            <div class="col-1">
+                                <p class="lead">2</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">panjang</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="panjang" value="<%= produk.ukuran.celana[0]?.panjang %>">
+                            </div> 
+
+                            <div class="col-1">
+                                <p class="lead">3</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">paha</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="paha" value="<%= produk.ukuran.celana[0]?.paha %>">
+                            </div> 
+
+                            <div class="col-1">
+                                <p class="lead">4</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">lutut</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="lutut" value="<%= produk.ukuran.celana[0]?.lutut %>">
+                            </div> 
+
+                            <div class="col-1">
+                                <p class="lead">5</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">kaki</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="kaki" value="<%= produk.ukuran.celana[0]?.kaki %>">
+                            </div> 
+
+                            <div class="col-1">
+                                <p class="lead">6</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">kil</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="kil" value="<%= produk.ukuran.celana[0]?.kil %>">
+                            </div> 
+
+                            <div class="col-1">
+                                <p class="lead">7</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="lead">pinggul celana</p>
+                        </div>
+                            <div class="col-8">
+                                <input class="form-control ukuranbaju" type="text" name="pinggulCelana" value="<%= produk.ukuran.celana[0]?.pinggulCelana %>">
+                            </div> 
+
+                            <input type="hidden" value="<%= produk._id %> " name="idBp" >
+
+                            <div class="col-1 m-auto">
+                                <br>
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-1"></div>
+            </div>
+    </div>
+    </div>
+<%- include('../includes/end.ejs') %>

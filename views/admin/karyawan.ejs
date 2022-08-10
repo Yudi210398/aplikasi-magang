@@ -1,0 +1,59 @@
+<%- include('../includes/head.ejs') %> 
+
+</head>
+<body>
+    <div class="wrapper">
+    <%- include('../includes/nav.ejs') %>
+    <div class="main_content">
+        <div class="header"><i class="bi bi-person-circle"></i> Data Karyawan </div>
+        <div class="info">
+            <div class="row">
+                <div class="col-8">
+                    <br><br>
+                <p class="lead">Halaman untuk mengatur data karywan</p>
+                </div>
+                <div class="col-4">
+                    <br><br>
+                    <a class="btn btn-secondary" href="/tambah-data-karyawan" role="button">Tambah</a>
+                    </div>
+            </div>
+    <br>
+    <br>
+    <br>
+    
+    <% if(produk.length < 1){ %>
+        <h1 class="h4">Data Tidak ada</h1>
+    <% } else{ %>  
+            <div class="row text-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">NAMA</th>
+                            <th scope="col">TELEPON / HP</th>
+                            <th scope="col">ALAMAT</th>
+                            <th scope="col">JABATAN</th>
+                            <th scope="col">EDIT</th>
+                            <th scope="col">HAPUS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <% produk.forEach(el => { %> 
+                        <tr>
+                            <th scope="row"><%= el.no %></th>
+                            <td><%= el.namaCustomer %></td>
+                            <td><%= el.noTelp %></td>
+                            <td> <%= el.alamat %> </td>
+                            <td> <%= el.jabatan %></td>
+                            <td><a href="/edit-karyawan/<%= el._id %>?editDataKaryawan=edit-data-karyawan" class="btn btn-warning btn-sm text-center"><i class="bi bi-pencil-square"></i></a></td>
+                            <td><a class="btn btn-danger btn-sm text-center" href="/hapus-karyawan/<%= el._id %>?hapus=hapus-data"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                        <% }) %>
+                        </tbody>
+                    </table>
+            </div>
+        <% } %>
+        </div>
+    </div>
+    </div>
+<%- include('../includes/end.ejs') %>

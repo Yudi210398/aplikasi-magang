@@ -1,0 +1,61 @@
+<%- include('../includes/head.ejs') %> 
+
+</head>
+<body>
+    <div class="wrapper">
+    <%- include('../includes/nav.ejs') %>
+    <div class="main_content">
+        <div class="header"> Pencarian Data <i class="bi bi-search"></i></div>
+
+        <div class="info">
+        <div class="row">
+            <br>
+            <br>
+            <div class="col-5">
+                <br><br>
+                    <form action="/customer/cari-data" class="d-flex" method="post">
+                        <input class="form-control me-2" type="search" placeholder="Cari Data" aria-label="Search" name="cariData">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+            </div>
+        </div>
+    <br>
+    <br>
+    
+    <% if(produk.length < 1){ %>
+        <h1 class="h4">Data pencarian Tidak ada</h1>
+    <% } else{ %>   
+        <div class="row text-center justify-content-center"> 
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">NAMA</th>
+                            <th scope="col">TELEPON / HP</th>
+                            <th scope="col">ALAMAT</th>
+                                <th scope="col">UKURAN</th>
+                                <th scope="col">EDIT</th>
+                                <th scope="col">HAPUS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% produk.forEach(el => { %> 
+                        <tr>
+                            <th scope="row"><%= el.no %> </th>
+                            <td class="namaCustomer"> <%= el.namaCustomer %> </td>
+                            <td> <%= el.noTelp %> </td>
+                            <td> <%= el.alamat %> </td>
+                                <td><a class="btn btn-primary btn-sm text-center ukuran" href="/customer/ukuran/<%= el._id %>"><i class="bi bi-clipboard-data text-center"></i></a></td>
+                                <td><a class="btn btn-warning btn-sm text-center" href="/customer/edit-data/<%= el._id %>?edit=edit-data"><i class="bi bi-pencil-square"></i></a></td>
+                                <td><a class="btn btn-danger btn-sm text-center" href="/customer/hapus-data/<%= el._id %>?delete=hapus-data"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                        <% }) %>
+                        </tbody>
+                    </table>    
+        </div>
+    <% } %>
+        </div>
+    </div>
+    </div>
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,113 @@
+<%- include('../includes/head.ejs') %> 
+
+</head>
+<body>
+    <div class="wrapper">
+    <%- include('../includes/nav.ejs') %>
+    <div class="main_content">
+        <div class="header"><% if (editing) { %><i class="bi bi-pencil-square"></i><% } else { %><i class="bi bi-person-plus-fill"></i><% }  %> <% if (editing) { %>
+            Edit Data
+        <% } else if (staff) {%> 
+            Tambah Karyawan
+        <%}  else if (editStaff) {%> 
+            Edit Data Karyawan
+        <%} else  {%> Tambah Data <%} %> </div>
+        
+        <div class="info">
+            <br><br>
+            <br>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-6">
+                    <% if (pesan) { %>
+                        <div class="alert alert-danger" role="alert">
+                            No telp sudah terdaftar, Masukan No Lain
+                        </div>
+                    <% } %>
+
+                    <% if (errors) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= errors %>
+                        </div>
+                    <% } %>
+            <br>
+                    <div class="col-12">
+                        <p class="judulTambah"> <% if (editing) { %>EDIT DATA PELANGGAN <%= dataP.namaCustomer %> <% }  else if (editStaff) {%>  edit Data Karyawan  <%= data.namaCustomer %> 
+                            <%} else if (staff) {%>  INPUT DATA KARYAWAN
+                        <%} else { %>INPUT DATA PELANGGAN<% }  %> </p>
+                    </div>
+
+                    <form action="<% if (editing) { %>/customer/edit-data
+                        <% } else if (editStaff) {%> 
+                            /data-edit-karyawan
+                        <%} else if (staff) {%>/data-tambah-karyawan<%} else {%>/customer/tambahdata<%} %>" method="POST">
+                        <input
+                        type="text" 
+                        class="form-control"
+                        name="namaCustomer"
+                        placeholder="Masukan Nama"
+                        id="namaCustomers"
+                        value="<% if (editing) { %><%= dataP.namaCustomer %> <% } else if (editStaff) {%> <%= data.namaCustomer %> <%} else if (data) {%><%= data.namaCustomer %><%} %>"
+                        required 
+                        /> 
+                        <br>
+                        <input
+                        type="text" 
+                        class="form-control"
+                        name="noHP"
+                        placeholder="Telp-Hp"
+                        id="noHps"
+                        min="0"
+                        value="<% if (editing) { %><%= dataP.noTelp %> <% } else if (editStaff) {%> <%= data.noTelp %> <%}  else if (data) {%><%= data.noHP %><%} %>"
+                        required 
+                        />
+                        <br>
+
+                        <input
+                        type="text" 
+                        class="form-control"
+                        name="alamatCustomer"
+                        placeholder="Alamat"
+                        id="alamats"
+                        value="<% if (editing) { %><%= dataP.alamat %> <% } else if (editStaff) {%> <%= data.alamat %> <%} else if (data) {%><%= data.alamatCustomer %><%}  %>"
+                        />
+    <br>
+                        <% if (staff) { %>
+                            <input type="text" name="jabatan" class="form-control"
+                            required
+                            value="<% if (editStaff) { %> <%= data.jabatan %> 
+                            <% } %>"
+                            placeholder="Jabatan"
+                            id="jabatan">
+                        <% } %>
+    
+                        <% if (editing) { %>
+                            <input type="hidden" value="<%= dataP._id %>" name="idP">
+                        <% } %>
+
+                        <% if (editStaff) { %>
+                            <input type="hidden" value="<%= data._id %>" name="idK">
+                        <% } %>
+                            <br><br>
+
+                            <% if (editing) { %>
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <% } else if (editStaff) {%> 
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <%} else if (staff) {%> 
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <%} else  {%>  <input type="hidden" name="_csrf" value="<%= csrfToken %>"> <%} %>
+                            
+                        <button class="btn btn-success" type="submit"><% if (editing) { %>
+                            Edit Data
+                        <% } else if (editStaff) {%> 
+                            Edit Karyawan
+                        <%} else if (staff) {%> 
+                            Tambah Karyawan
+                        <%} else  {%> Tambah Data <%} %></button>
+                    </form>
+                </div>
+                </div>
+            </div>
+    </div>
+    </div>
+<%- include('../includes/end.ejs') %>
